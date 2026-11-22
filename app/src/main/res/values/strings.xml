@@ -1,0 +1,39 @@
+<resources>
+
+    <!-- Nombre de la aplicación -->
+    <string name="app_name">Agenda</string>
+
+    <!-- Pantalla principal -->
+    <string name="agenda">AGENDA</string>
+    <string name="buscar_contacte">Buscar contacte</string>
+    <string name="afegir_contacte">Afegir contacte</string>
+
+    <!-- Formulario -->
+    <string name="nou_contacte">NOU CONTACTE</string>
+    <string name="editar_contacte">EDITAR CONTACTE</string>
+
+    <string name="nom">Nom</string>
+    <string name="cognom">Cognom</string>
+    <string name="telefon">Telèfon</string>
+    <string name="data_naixement">Data de naixement: dd/mm/aaaa</string>
+    <string name="adreca">Adreça</string>
+    <string name="correu_electronic">Correu electrònic</string>
+
+    <string name="acceptar">ACCEPTAR</string>
+    <string name="cancelar">CANCEL·LAR</string>
+
+    <!-- Contacto de la lista -->
+    <string name="trucar_contacte">Trucar al contacte</string>
+    <string name="veure_contacte">Veure contacte</string>
+
+    <!-- Textos de ejemplo -->
+    <string name="nom_exemple">Nom Cognom</string>
+    <string name="telefon_exemple">612345678</string>
+
+    <!-- Errores -->
+    <string name="error_nom">El nom és obligatori</string>
+    <string name="error_cognom">El cognom és obligatori</string>
+    <string name="error_telefon">El telèfon és obligatori</string>
+    <string name="error_email">El correu electrònic no és vàlid</string>
+
+</resources>

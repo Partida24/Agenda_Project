@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- EditText -->
+    <style name="EditText">
+        <item name="android:textColor">@color/orange</item>
+        <item name="android:textColorHint">@color/grey</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:drawablePadding">8dp</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:layout_marginBottom">15dp</item>
+    </style>
+    <!-- EditText -->
+
+
+    <!-- Button -->
+    <style name="ButtonRedondo">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:backgroundTint">@color/orange</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:layout_marginBottom">50dp</item>
+    </style>
+    <!-- Button -->
+
+
+    <!-- TextView -->
+    <style name="TextView">
+        <item name="android:textColor">@color/orange</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">30sp</item>
+        <item name="android:layout_marginBottom">20dp</item>
+    </style>
+    <!-- TextView -->
+
+    <!-- ListView -->
+    <style name="ListView">
+
+    </style>
+    <!-- ListView -->
+
+
+
+
+</resources>

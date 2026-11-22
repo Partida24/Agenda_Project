@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    android:orientation="vertical"
+    android:paddingStart="30dp"
+    android:paddingTop="50dp"
+    android:paddingEnd="30dp"
+    android:paddingBottom="20dp"
+    tools:context=".MainActivity">
+
+    <!-- Cabecera -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/textAgenda"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="AGENDA"
+            android:textColor="#222222"
+            android:textSize="30sp"
+            android:textStyle="bold" />
+
+        <!-- Botón para añadir -->
+        <ImageButton
+            android:id="@+id/addPerson"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="@drawable/bg_butotton"
+            android:contentDescription="Afegir contacte"
+            android:padding="10dp"
+            android:scaleType="centerInside"
+            android:src="@drawable/person_add"
+            app:tint="#CC5B38" />
+
+    </LinearLayout>
+
+    <!-- Buscador -->
+    <EditText
+        android:id="@+id/inputBuscar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/bg_search"
+        android:drawableStart="@drawable/search"
+        android:drawablePadding="10dp"
+        android:hint="Buscar contacte"
+        android:inputType="text"
+        android:maxLines="1"
+        android:padding="14dp"
+        android:textSize="15sp" />
+
+    <!-- Lista de contactos -->
+    <ListView
+        android:id="@+id/myListView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@android:color/transparent"
+        android:clipToPadding="false"
+        android:divider="#EEEEEE"
+        android:dividerHeight="1dp"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp" />
+
+</LinearLayout>

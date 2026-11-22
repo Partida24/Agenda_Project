@@ -1,0 +1,266 @@
+package com.example.agenda;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.ListView;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import java.util.ArrayList;
+
+public class MainActivity extends AppCompatActivity {
+
+    // Códigos para saber si creamos o editamos
+    private static final int REQUEST_CREAR = 1;
+    private static final int REQUEST_EDITAR = 2;
+
+    private ArrayList<Contacte> contactes;
+    private AdaptadorContactes adaptador;
+
+    private EditText inputBuscar;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        // Relacionamos las variables con el XML
+        ImageButton addPerson = findViewById(R.id.addPerson);
+        inputBuscar = findViewById(R.id.inputBuscar);
+        ListView llistaContactes = findViewById(R.id.myListView);
+
+        // Creamos la lista
+        contactes = new ArrayList<>();
+
+        // Contactos de prueba
+        afegirContactesProva();
+
+        // Preparamos el adaptador
+        adaptador = new AdaptadorContactes(this, contactes);
+        llistaContactes.setAdapter(adaptador);
+
+        // Abrimos el formulario para crear
+        addPerson.setOnClickListener(v -> obrirNouContacte());
+
+        // Abrimos el contacto seleccionado
+        llistaContactes.setOnItemClickListener(
+                (parent, view, position, id) -> {
+
+                    Contacte contacte = adaptador.getItem(position);
+
+                    if (contacte != null) {
+                        obrirContactePerEditar(contacte);
+                    }
+                }
+        );
+
+        // Filtramos mientras escribimos
+        inputBuscar.addTextChangedListener(new TextWatcher() {
+
+            @Override
+            public void beforeTextChanged(
+                    CharSequence s,
+                    int start,
+                    int count,
+                    int after
+            ) {
+            }
+
+            @Override
+            public void onTextChanged(
+                    CharSequence s,
+                    int start,
+                    int before,
+                    int count
+            ) {
+                adaptador.getFilter().filter(s);
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+            }
+        });
+    }
+
+    private void afegirContactesProva() {
+
+        contactes.add(new Contacte(
+                "Adam",
+                "Partida",
+                "612345678",
+                "12/05/2000",
+                "Barcelona",
+                "adam@gmail.com"
+        ));
+
+        contactes.add(new Contacte(
+                "Adrian",
+                "Herrera",
+                "623456789",
+                "20/08/1999",
+                "Sabadell",
+                "adrian@gmail.com"
+        ));
+
+        contactes.add(new Contacte(
+                "Ivan",
+                "Vera",
+                "611111771",
+                "10/10/1997",
+                "Sant Quirze",
+                "ivan@gmail.com"
+        ));
+    }
+
+    private void obrirNouContacte() {
+
+        Intent intent = new Intent(
+                MainActivity.this,
+                ContactActivity.class
+        );
+
+        // Indicamos que queremos crear
+        intent.putExtra("modo", "crear");
+
+        startActivityForResult(intent, REQUEST_CREAR);
+    }
+
+    private void obrirContactePerEditar(Contacte contacte) {
+
+        Intent intent = new Intent(
+                MainActivity.this,
+                ContactActivity.class
+        );
+
+        // Indicamos que queremos editar
+        intent.putExtra("modo", "editar");
+
+        // Enviamos los datos del contacto
+        intent.putExtra("nom", contacte.getNom());
+        intent.putExtra("cognom", contacte.getCognom());
+        intent.putExtra("numero", contacte.getNumero());
+        intent.putExtra("dataNaix", contacte.getDataNaix());
+        intent.putExtra("adreca", contacte.getAdreca());
+        intent.putExtra("email", contacte.getEmail());
+
+        // Guardamos su posición real
+        intent.putExtra(
+                "position",
+                contactes.indexOf(contacte)
+        );
+
+        startActivityForResult(intent, REQUEST_EDITAR);
+    }
+
+    @Override
+    protected void onActivityResult(
+            int requestCode,
+            int resultCode,
+            Intent data
+    ) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        // Comprobamos que se han guardado los datos
+        if (resultCode != RESULT_OK || data == null) {
+            return;
+        }
+
+        // Recogemos los datos recibidos
+        String nom = data.getStringExtra("nom");
+        String cognom = data.getStringExtra("cognom");
+        String numero = data.getStringExtra("numero");
+        String dataNaix = data.getStringExtra("dataNaix");
+        String adreca = data.getStringExtra("adreca");
+        String email = data.getStringExtra("email");
+
+        if (requestCode == REQUEST_CREAR) {
+
+            crearContacte(
+                    nom,
+                    cognom,
+                    numero,
+                    dataNaix,
+                    adreca,
+                    email
+            );
+
+        } else if (requestCode == REQUEST_EDITAR) {
+
+            int position = data.getIntExtra("position", -1);
+
+            editarContacte(
+                    position,
+                    nom,
+                    cognom,
+                    numero,
+                    dataNaix,
+                    adreca,
+                    email
+            );
+        }
+
+        // Actualizamos la lista manteniendo la búsqueda
+        actualitzarLlista();
+    }
+
+    private void crearContacte(
+            String nom,
+            String cognom,
+            String numero,
+            String dataNaix,
+            String adreca,
+            String email
+    ) {
+
+        Contacte nouContacte = new Contacte(
+                nom,
+                cognom,
+                numero,
+                dataNaix,
+                adreca,
+                email
+        );
+
+        contactes.add(nouContacte);
+    }
+
+    private void editarContacte(
+            int position,
+            String nom,
+            String cognom,
+            String numero,
+            String dataNaix,
+            String adreca,
+            String email
+    ) {
+
+        // Comprobamos que la posición exista
+        if (position < 0 || position >= contactes.size()) {
+            return;
+        }
+
+        Contacte contacte = contactes.get(position);
+
+        // Modificamos el contacto
+        contacte.setNom(nom);
+        contacte.setCognom(cognom);
+        contacte.setNumero(numero);
+        contacte.setDataNaix(dataNaix);
+        contacte.setAdreca(adreca);
+        contacte.setEmail(email);
+    }
+
+    private void actualitzarLlista() {
+
+        // Aplicamos otra vez la búsqueda actual
+        String cercaActual = inputBuscar
+                .getText()
+                .toString();
+
+        adaptador.getFilter().filter(cercaActual);
+    }
+}

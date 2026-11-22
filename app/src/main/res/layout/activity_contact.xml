@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    android:fillViewport="true">
+
+    <!-- Formulario del contacto -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingStart="30dp"
+        android:paddingTop="50dp"
+        android:paddingEnd="30dp"
+        android:paddingBottom="30dp">
+
+        <!-- Título de la pantalla -->
+        <TextView
+            android:id="@+id/textTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="25dp"
+            android:gravity="center"
+            android:text="NOU CONTACTE"
+            android:textColor="#222222"
+            android:textSize="28sp"
+            android:textStyle="bold" />
+
+        <!-- Nombre -->
+        <EditText
+            android:id="@+id/inputNom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Nom"
+            android:inputType="textCapWords"
+            android:maxLines="1" />
+
+        <!-- Apellido -->
+        <EditText
+            android:id="@+id/inputCognom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:hint="Cognom"
+            android:inputType="textCapWords"
+            android:maxLines="1" />
+
+        <!-- Teléfono -->
+        <EditText
+            android:id="@+id/inputNumero"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:hint="Telèfon"
+            android:inputType="phone"
+            android:maxLines="1" />
+
+        <!-- Fecha de nacimiento -->
+        <EditText
+            android:id="@+id/inputData"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:hint="Data de naixement: dd/mm/aaaa"
+            android:inputType="date"
+            android:maxLines="1" />
+
+        <!-- Dirección -->
+        <EditText
+            android:id="@+id/inputAdreca"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:hint="Adreça"
+            android:inputType="textPostalAddress"
+            android:maxLines="1" />
+
+        <!-- Correo electrónico -->
+        <EditText
+            android:id="@+id/inputEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:hint="Correu electrònic"
+            android:inputType="textEmailAddress"
+            android:maxLines="1" />
+
+        <!-- Botón para guardar -->
+        <Button
+            android:id="@+id/btnAcceptar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:backgroundTint="@color/greenNatural"
+            android:text="ACCEPTAR"
+            android:textColor="#FFFFFF" />
+
+        <!-- Botón para cancelar -->
+        <Button
+            android:id="@+id/btnCancelar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:backgroundTint="@color/greyFlojo"
+            android:text="CANCEL·LAR"
+            android:textColor="#222222" />
+
+    </LinearLayout>
+
+</ScrollView>

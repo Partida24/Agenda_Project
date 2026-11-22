@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:descendantFocusability="blocksDescendants"
+    android:gravity="center_vertical"
+    android:minHeight="72dp"
+    android:orientation="horizontal"
+    android:paddingStart="5dp"
+    android:paddingTop="12dp"
+    android:paddingEnd="5dp"
+    android:paddingBottom="12dp">
+
+    <!-- Botón para llamar -->
+    <ImageButton
+        android:id="@+id/btnLlamar"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginEnd="12dp"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:contentDescription="@string/trucar_contacte"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+        android:padding="10dp"
+        android:scaleType="centerInside"
+        android:src="@drawable/call_phone" />
+
+    <!-- Datos del contacto -->
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/textNom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Nom Cognom"
+            android:textColor="#222222"
+            android:textSize="17sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/textNumero"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="612345678"
+            android:textColor="#777777"
+            android:textSize="14sp" />
+
+    </LinearLayout>
+
+    <!-- Flecha para abrir el contacto -->
+    <ImageView
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:alpha="0.5"
+        android:contentDescription="@string/veure_contacte"
+        android:padding="5dp"
+        android:src="@drawable/ic_arrow_right" />
+
+</LinearLayout>
