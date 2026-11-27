@@ -1,9 +1,8 @@
 package com.example.agenda;
 
-
-
 public class Contacte {
 
+    private int id = -1;
     private String nom;
     private String cognom;
     private String numero;
@@ -11,19 +10,35 @@ public class Contacte {
     private String adreca;
     private String email;
 
-
-
     public Contacte() {
-
     }
 
     public Contacte(String nom, String cognom, String numero, String dataNaix, String adreca, String email) {
+        this.id = -1;
         this.nom = nom;
         this.cognom = cognom;
         this.numero = numero;
         this.dataNaix = dataNaix;
         this.adreca = adreca;
         this.email = email;
+    }
+
+    public Contacte(int id, String nom, String cognom, String numero, String dataNaix, String adreca, String email) {
+        this.id = id;
+        this.nom = nom;
+        this.cognom = cognom;
+        this.numero = numero;
+        this.dataNaix = dataNaix;
+        this.adreca = adreca;
+        this.email = email;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getNom() {
